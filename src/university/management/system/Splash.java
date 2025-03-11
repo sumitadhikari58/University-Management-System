@@ -39,6 +39,13 @@ public class Splash extends JFrame implements Runnable {
             try { Thread.sleep(50); } catch (Exception e) { e.printStackTrace(); }
         }
 
+        // 🔥 Zoom-in effect
+        for (int i = 0; i <= 20; i++) {
+            img.setBounds(-i * 5, -i * 3, 1000 + i * 10, 700 + i * 6);
+            repaint();
+            try { Thread.sleep(50); } catch (Exception e) { e.printStackTrace(); }
+        }
+
         // Stay for 2 seconds
         try { Thread.sleep(2000); } catch (Exception e) { e.printStackTrace(); }
 
@@ -62,11 +69,25 @@ public class Splash extends JFrame implements Runnable {
         add(bottomBar);
         repaint();
 
-        // Animate bars to close like a camera shutter
+        // Animate bars to close like a camera shutter with bounce effect
         int speed = 10;
         for (int i = 0; i <= 350; i += 10) {
             topBar.setBounds(0, -350 + i, 1000, 350);
             bottomBar.setBounds(0, 700 - i, 1000, 350);
+            repaint();
+            try { Thread.sleep(speed); } catch (Exception e) { e.printStackTrace(); }
+        }
+
+        // Bounce effect
+        for (int i = 0; i <= 20; i += 2) {
+            topBar.setBounds(0, -350 + 350 + i, 1000, 350);
+            bottomBar.setBounds(0, 700 - 350 - i, 1000, 350);
+            repaint();
+            try { Thread.sleep(speed); } catch (Exception e) { e.printStackTrace(); }
+        }
+        for (int i = 20; i >= 0; i -= 2) {
+            topBar.setBounds(0, -350 + 350 + i, 1000, 350);
+            bottomBar.setBounds(0, 700 - 350 - i, 1000, 350);
             repaint();
             try { Thread.sleep(speed); } catch (Exception e) { e.printStackTrace(); }
         }
